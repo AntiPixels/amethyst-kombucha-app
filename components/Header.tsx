@@ -19,7 +19,7 @@ export default function Header() {
   const navbarBackground = useTransform(
     scrollY,
     [0, 100],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]
+    ["rgba(var(--background), 0)", "rgba(var(--background), 0.8)"]
   );
 
   const navbarHeight = useTransform(scrollY, [0, 100], ["80px", "60px"]);
@@ -32,9 +32,7 @@ export default function Header() {
   return (
     <motion.header
       style={{ background: navbarBackground, height: navbarHeight }}
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 transition-all duration-300 ${
-        theme === "dark" ? "text-white" : "text-purple-800"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 transition-all duration-300 text-foreground"
     >
       <div className="flex items-center space-x-4">
         <Button
@@ -54,7 +52,7 @@ export default function Header() {
       <div
         className={`md:flex space-x-4 ${
           isMobileMenuOpen
-            ? "absolute top-full left-0 right-0 bg-white dark:bg-gray-800 p-4 shadow-md"
+            ? "absolute top-full left-0 right-0 bg-background p-4 shadow-md"
             : "hidden"
         }`}
       >
@@ -63,7 +61,7 @@ export default function Header() {
             <a
               key={section}
               href={`#${section}`}
-              className={`capitalize block md:inline-block py-2`}
+              className="capitalize block md:inline-block py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {section}
@@ -89,7 +87,7 @@ export default function Header() {
         >
           <ShoppingCart className="h-6 w-6" />
           {totalCartItems > 0 && (
-            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+            <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-destructive text-destructive-foreground text-xs">
               {totalCartItems}
             </span>
           )}

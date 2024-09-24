@@ -42,61 +42,33 @@ We'll process your order shortly. Enjoy your kombucha!`);
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50">
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween" }}
-            className={`absolute right-0 top-0 bottom-0 w-full max-w-md ${
-              theme === "dark" ? "bg-gray-800 text-white" : "bg-white"
-            } shadow-lg`}
+            className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-background text-foreground shadow-lg"
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2
-                  className={`text-2xl font-bold ${
-                    theme === "dark" ? "text-purple-300" : "text-purple-800"
-                  }`}
-                >
-                  Your Cart
-                </h2>
+                <h2 className="text-2xl font-bold">Your Cart</h2>
                 <Button variant="ghost" size="icon" onClick={onClose}>
                   <X className="h-6 w-6" />
                 </Button>
               </div>
               {cartItems.length === 0 ? (
-                <p
-                  className={
-                    theme === "dark" ? "text-gray-300" : "text-purple-600"
-                  }
-                >
-                  Your cart is empty.
-                </p>
+                <p className="text-muted-foreground">Your cart is empty.</p>
               ) : (
                 <>
                   {cartItems.map((item) => (
                     <div
                       key={item.id}
-                      className="flex justify-between items-center mb-4"
+                      className="flex justify-between items-center mb-4 p-3 rounded-lg bg-muted"
                     >
                       <div>
-                        <h3
-                          className={`font-semibold ${
-                            theme === "dark"
-                              ? "text-purple-300"
-                              : "text-purple-800"
-                          }`}
-                        >
-                          {item.name}
-                        </h3>
-                        <p
-                          className={`text-sm ${
-                            theme === "dark"
-                              ? "text-gray-300"
-                              : "text-purple-600"
-                          }`}
-                        >
+                        <h3 className="font-semibold">{item.name}</h3>
+                        <p className="text-sm text-muted-foreground">
                           ${item.price.toFixed(2)} x {item.quantity}
                         </p>
                       </div>
@@ -105,11 +77,6 @@ We'll process your order shortly. Enjoy your kombucha!`);
                           variant="outline"
                           size="icon"
                           onClick={() => removeFromCart(item.id)}
-                          className={
-                            theme === "dark"
-                              ? "text-purple-300 border-purple-300"
-                              : "text-purple-600 border-purple-600"
-                          }
                         >
                           -
                         </Button>
@@ -118,11 +85,6 @@ We'll process your order shortly. Enjoy your kombucha!`);
                           variant="outline"
                           size="icon"
                           onClick={() => addToCart(item)}
-                          className={
-                            theme === "dark"
-                              ? "text-purple-300 border-purple-300"
-                              : "text-purple-600 border-purple-600"
-                          }
                         >
                           +
                         </Button>
@@ -139,22 +101,8 @@ We'll process your order shortly. Enjoy your kombucha!`);
                   ))}
                   <div className="mt-6">
                     <div className="flex justify-between mb-4">
-                      <span
-                        className={`font-semibold ${
-                          theme === "dark"
-                            ? "text-purple-300"
-                            : "text-purple-800"
-                        }`}
-                      >
-                        Total:
-                      </span>
-                      <span
-                        className={`font-bold ${
-                          theme === "dark"
-                            ? "text-purple-300"
-                            : "text-purple-800"
-                        }`}
-                      >
+                      <span className="font-semibold">Total:</span>
+                      <span className="font-bold">
                         $
                         {cartItems
                           .reduce(
@@ -165,11 +113,7 @@ We'll process your order shortly. Enjoy your kombucha!`);
                       </span>
                     </div>
                     <Button
-                      className={`w-full ${
-                        theme === "dark"
-                          ? "bg-purple-500 hover:bg-purple-600"
-                          : "bg-purple-600 hover:bg-purple-700"
-                      } text-white`}
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                       onClick={() => {
                         sendToWhatsApp(cartItems);
                         onClose();

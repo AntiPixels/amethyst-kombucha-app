@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
-    <footer className="py-12 px-6 bg-purple-800 text-white dark:bg-gray-900">
+    <footer className="py-12 px-6 bg-primary text-primary-foreground">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h3 className="text-2xl font-bold mb-4">Amethyst Kombucha</h3>
@@ -41,9 +41,9 @@ export default function Footer() {
             <Input
               type="email"
               placeholder="Enter your email"
-              className="rounded-r-none bg-white text-purple-800 dark:bg-gray-700 dark:text-white"
+              className="rounded-r-none bg-background text-foreground"
             />
-            <Button className="rounded-l-none bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600">
+            <Button className="rounded-l-none bg-secondary text-secondary-foreground hover:bg-secondary/90">
               Subscribe
             </Button>
           </form>

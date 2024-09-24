@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/dialog";
 import { useCart } from "@/components/CartContext";
 import { products } from "@/data/products";
-import { useTheme } from "next-themes";
 
 export default function Products() {
   const { addToCart } = useCart();
@@ -22,30 +21,23 @@ export default function Products() {
     isOpen: boolean;
     recipe: string;
   }>({ isOpen: false, recipe: "" });
-  const { theme } = useTheme();
 
   return (
-    <section id="products" className="py-20 px-6">
+    <section id="products" className="py-20 px-6 bg-background">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-6xl mx-auto"
       >
-        <h2
-          className={`text-4xl font-bold mb-12 text-center ${
-            theme === "dark" ? "text-purple-300" : "text-purple-800"
-          }`}
-        >
+        <h2 className="text-4xl font-bold mb-12 text-center text-foreground">
           Our Products
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {products.map((product) => (
             <Card
               key={product.id}
-              className={`overflow-hidden ${
-                theme === "dark" ? "bg-gray-700 text-white" : ""
-              }`}
+              className="overflow-hidden bg-card text-card-foreground"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -59,28 +51,14 @@ export default function Products() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
-                  <h3
-                    className={`text-xl font-semibold mb-2 ${
-                      theme === "dark" ? "text-purple-300" : "text-purple-800"
-                    }`}
-                  >
-                    {product.name}
-                  </h3>
-                  <p
-                    className={`mb-4 ${
-                      theme === "dark" ? "text-gray-300" : "text-purple-600"
-                    }`}
-                  >
+                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                  <p className="mb-4 text-muted-foreground">
                     ${product.price.toFixed(2)}
                   </p>
                   <div className="flex justify-between">
                     <Button
                       onClick={() => addToCart(product)}
-                      className={`${
-                        theme === "dark"
-                          ? "bg-purple-500 hover:bg-purple-600"
-                          : "bg-purple-600 hover:bg-purple-700"
-                      } text-white`}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
                     >
                       Add to Cart
                     </Button>
@@ -91,11 +69,6 @@ export default function Products() {
                           isOpen: true,
                           recipe: product.recipe,
                         })
-                      }
-                      className={
-                        theme === "dark"
-                          ? "text-purple-300 border-purple-300"
-                          : "text-purple-600 border-purple-600"
                       }
                     >
                       Recipe
