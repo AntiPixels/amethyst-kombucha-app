@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X, Trash2 } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useCart } from "@/components/CartContext";
 import { CartItem } from "@/lib/types";
 
@@ -14,7 +13,7 @@ type CartProps = {
 
 export default function Cart({ isOpen, onClose }: CartProps) {
   const { cartItems, addToCart, removeFromCart, clearFromCart } = useCart();
-  const { theme } = useTheme();
+  
 
   const sendToWhatsApp = (cartItems: CartItem[]) => {
     const message =
