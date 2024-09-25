@@ -1,14 +1,152 @@
-import { CartItem } from '@/lib/types'
-import imageUrl1 from '@/public/assets/1.jpg'
+import { CartItem } from "@/lib/types";
+import Telang from "@/public/assets/bunga-telang.jpg";
+import Amarant from "@/public/assets/bunga-amarant.jpg";
+import Kelor from "@/public/assets/daun-kelor.jpg";
+import THijau from "@/public/assets/teh-hijau.jpg";
+import THitam from "@/public/assets/teh-hitam.jpg";
+import Kopi from "@/public/assets/kopi.jpg";
+
 
 export const products: CartItem[] = [
-  { id: 1,imageUrl: imageUrl1,  name: 'Classic Amethyst', price: 4.99, quantity: 0, recipe: 'Our signature blend with a perfect balance of sweetness and tang.' },
-  { id: 2,imageUrl: imageUrl1, name: 'Lavender Dream', price: 5.49, quantity: 0, recipe: 'Calming lavender infused kombucha for relaxation.' },
-  { id: 3,imageUrl: imageUrl1, name: 'Ginger Zest', price: 5.29, quantity: 0, recipe: 'A spicy kick of ginger for an invigorating experience.' },
-  { id: 4,imageUrl: imageUrl1, name: 'Bunga Telang', price: 5.99, quantity: 0, recipe: 'Butterfly pea flower kombucha with a mesmerizing blue hue.' },
-  { id: 5,imageUrl: imageUrl1, name: 'Bunga Amaranth', price: 5.79, quantity: 0, recipe: 'Rich in antioxidants with a vibrant red color.' },
-  { id: 6,imageUrl: imageUrl1, name: 'Daun Kelor', price: 5.59, quantity: 0, recipe: 'Moringa leaf kombucha packed with nutrients.' },
-  { id: 7,imageUrl: imageUrl1, name: 'Teh Hijau', price: 5.39, quantity: 0, recipe: 'Green tea kombucha for a refreshing boost.' },
-  { id: 8,imageUrl: imageUrl1, name: 'Black Tea', price: 5.19, quantity: 0, recipe: 'Classic black tea kombucha with a robust flavor.' },
-  { id: 9,imageUrl: imageUrl1, name: 'Kopi Kombucha', price: 5.89, quantity: 0, recipe: 'Coffee-infused kombucha for a unique energy kick.' },
-]
+  {
+    id: 1,
+    imageUrl: Telang,
+    name: "Bunga Telang",
+    price: 55000,
+    quantity: 0,
+    recipe: "Kombucha bunga telang dengan warna biru yang memesona.",
+    ingredients: [
+      "1 liter air",
+      "4 sendok makan teh hitam",
+      "100 gram gula",
+      "200 ml starter kombucha",
+      "10 gram bunga telang kering",
+    ],
+    instructions: [
+      "Rebus air dan seduh teh hitam selama 10 menit.",
+      "Tambahkan gula dan aduk hingga larut.",
+      "Dinginkan larutan teh hingga suhu ruang.",
+      "Tambahkan starter kombucha dan bunga telang.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+  {
+    id: 2,
+    imageUrl: Amarant,
+    name: "Bunga Amaranth",
+    price: 52000,
+    quantity: 0,
+    recipe: "Kaya antioksidan dengan warna merah yang menawan.",
+    ingredients: [
+      "1 liter air",
+      "4 sendok makan teh hitam",
+      "100 gram gula",
+      "200 ml starter kombucha",
+      "15 gram bunga amaranth kering",
+    ],
+    instructions: [
+      "Rebus air dan seduh teh hitam selama 10 menit.",
+      "Tambahkan gula dan aduk hingga larut.",
+      "Dinginkan larutan teh hingga suhu ruang.",
+      "Tambahkan starter kombucha dan bunga amaranth.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+  {
+    id: 3,
+    imageUrl: Kelor,
+    name: "Daun Kelor",
+    price: 50000,
+    quantity: 0,
+    recipe: "Kombucha daun kelor kaya nutrisi.",
+    ingredients: [
+      "1 liter air",
+      "4 sendok makan teh hitam",
+      "100 gram gula",
+      "200 ml starter kombucha",
+      "20 gram daun kelor segar",
+    ],
+    instructions: [
+      "Rebus air dan seduh teh hitam selama 10 menit.",
+      "Tambahkan gula dan aduk hingga larut.",
+      "Dinginkan larutan teh hingga suhu ruang.",
+      "Tambahkan starter kombucha dan daun kelor.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+  {
+    id: 4,
+    imageUrl: THijau,
+    name: "Teh Hijau",
+    price: 48000,
+    quantity: 0,
+    recipe: "Kombucha teh hijau untuk kesegaran yang menyehatkan.",
+    ingredients: [
+      "1 liter air",
+      "4 sendok makan teh hijau",
+      "100 gram gula",
+      "200 ml starter kombucha",
+    ],
+    instructions: [
+      "Rebus air dan seduh teh hijau selama 3-5 menit.",
+      "Tambahkan gula dan aduk hingga larut.",
+      "Dinginkan larutan teh hingga suhu ruang.",
+      "Tambahkan starter kombucha.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+  {
+    id: 5,
+    imageUrl: THitam,
+    name: "Teh Hitam",
+    price: 45000,
+    quantity: 0,
+    recipe: "Kombucha teh hitam klasik dengan cita rasa kuat.",
+    ingredients: [
+      "1 liter air",
+      "4 sendok makan teh hitam",
+      "100 gram gula",
+      "200 ml starter kombucha",
+    ],
+    instructions: [
+      "Rebus air dan seduh teh hitam selama 10 menit.",
+      "Tambahkan gula dan aduk hingga larut.",
+      "Dinginkan larutan teh hingga suhu ruang.",
+      "Tambahkan starter kombucha.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+  {
+    id: 6,
+    imageUrl: Kopi,
+    name: "Kopi Kombucha",
+    price: 58000,
+    quantity: 0,
+    recipe: "Kombucha kopi untuk dorongan energi yang unik.",
+    ingredients: [
+      "1 liter air",
+      "50 gram biji kopi giling kasar",
+      "100 gram gula",
+      "200 ml starter kombucha",
+    ],
+    instructions: [
+      "Rebus air dan seduh kopi menggunakan metode cold brew selama 12-24 jam.",
+      "Saring kopi dan tambahkan gula, aduk hingga larut.",
+      "Dinginkan larutan kopi hingga suhu ruang.",
+      "Tambahkan starter kombucha.",
+      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
+      "Saring dan botolkan kombucha kopi.",
+      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    ],
+  },
+];

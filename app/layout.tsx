@@ -6,7 +6,7 @@ import { CartProvider } from "@/components/CartContext";
 export const metadata: Metadata = {
   title: "Amethyst Kombucha",
   description:
-    "Kombucha is a fermented tea drink that contains a symbiotic culture of bacteria and yeast. It is known for its potential health benefits, such as improving digestion and boosting the immune system. The drink originated in China and has been consumed for centuries. It is made by fermenting sweetened black tea with a SCOBY (Symbiotic Culture of Bacteria and Yeast) and has a unique, tangy flavor.",
+    "Kombucha adalah minuman fermentasi teh yang mengandung bakteri baik dan asam amino yang bermanfaat untuk kesehatan.",
   robots: {
     index: true,
     follow: true,
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+    <html lang="en" suppressHydrationWarning >
+      <body className="antialiased">
         <ThemeProvider enableSystem={true} attribute="class">
           <CartProvider>{children}</CartProvider>
         </ThemeProvider>

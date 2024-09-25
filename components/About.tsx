@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Progress from "@/public/assets/progress-kombucha.jpg";
 
 export default function About() {
   return (
@@ -10,34 +13,59 @@ export default function About() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto text-center"
       >
-        <h2 className="text-4xl font-bold mb-6">About Us</h2>
+        <h2 className="text-4xl font-bold mb-6">Tentang Kami</h2>
         <p className="text-lg mb-8 text-muted-foreground">
-          Amethyst Kombucha is more than just a beverage; it&apos;s a commitment
-          to holistic wellness. Founded in 2015 by health enthusiasts and
-          kombucha aficionados, our mission is to bring the ancient wisdom of
-          fermented tea to modern-day wellness seekers.
+          Amethyst Kombucha lebih dari sekedar minuman; itu adalah komitmen
+          untuk kesehatan holistik. Didirikan pada tahun 2015 oleh pecinta
+          kesehatan dan kombucha, misi kami adalah membawa kebijaksanaan
+          kombucha yang tua ke pencari kesehatan modern.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Image
-            src="/placeholder.svg"
-            alt="Kombucha brewing process"
+            src={Progress}
+            alt="Proses pembuatan kombucha"
             width={500}
             height={300}
             className="rounded-lg shadow-lg"
           />
           <div className="flex flex-col justify-center text-left">
-            <h3 className="text-2xl font-semibold mb-4">Our Process</h3>
+            <h3 className="text-2xl font-semibold mb-4">Proses Kami</h3>
             <p className="text-muted-foreground">
-              We use only the finest organic ingredients and a carefully curated
-              SCOBY to create our signature kombucha blends. Each batch is
-              fermented to perfection, resulting in a harmonious balance of
-              flavors and beneficial probiotics.
+              Kami menggunakan bahan-bahan organik terbaik dan SCOBY yang
+              dipilih dengan cermat untuk menciptakan campuran kombucha
+              signature kami. Setiap batch di fermentasi dengan sempurna,
+              menghasilkan keseimbangan harmonis antara rasa dan probiotik
+              yang bermanfaat.
             </p>
             <ul className="mt-4 list-disc list-inside text-muted-foreground">
-              <li>Sourced from local organic farms</li>
-              <li>Small-batch fermentation for quality control</li>
-              <li>Innovative flavor combinations</li>
-              <li>Sustainability-focused packaging</li>
+              <motion.li
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+              >
+                Sumber dari pertanian organik lokal
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+              >
+                Fermentasi batch kecil untuk kontrol kualitas
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+              >
+                Kombinasi rasa inovatif
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.8 }}
+              >
+                Kemasan yang berfokus pada keberlanjutan
+              </motion.li>
             </ul>
           </div>
         </div>
@@ -45,3 +73,4 @@ export default function About() {
     </section>
   );
 }
+

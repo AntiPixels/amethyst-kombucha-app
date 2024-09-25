@@ -1,26 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import Image from "next/image";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
+  DialogTrigger,
 } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCart } from "@/components/CartContext";
 import { products } from "@/data/products";
+import { CartItem } from "@/lib/types";
+import Image from "next/image";
 
 export default function Products() {
   const { addToCart } = useCart();
-  const [recipeDialog, setRecipeDialog] = useState<{
-    isOpen: boolean;
-    recipe: string;
-  }>({ isOpen: false, recipe: "" });
+  const [selectedProduct, setSelectedProduct] = useState<CartItem | null>(null);
 
   return (
     <section id="products" className="py-20 px-6 bg-background">
@@ -31,67 +30,73 @@ export default function Products() {
         className="max-w-6xl mx-auto"
       >
         <h2 className="text-4xl font-bold mb-12 text-center text-foreground">
-          Our Products
+          Produk Kami
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
-            <Card
-              key={product.id}
-              className="overflow-hidden bg-card text-card-foreground"
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
+            <Card key={product.id} className="bg-card">
+              <CardContent className="p-6">
                 <Image
-                  src="/placeholder.svg"
+                  src={product.imageUrl}
                   alt={product.name}
-                  width={400}
-                  height={300}
-                  className="w-full h-48 object-cover"
+                  width={300}
+                  height={200}
+                  className="w-full h-48 object-cover mb-4 rounded"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                  <p className="mb-4 text-muted-foreground">
-                    ${product.price.toFixed(2)}
-                  </p>
-                  <div className="flex justify-between">
-                    <Button
-                      onClick={() => addToCart(product)}
-                      className="bg-primary text-primary-foreground hover:bg-primary/90"
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() =>
-                        setRecipeDialog({
-                          isOpen: true,
-                          recipe: product.recipe,
-                        })
-                      }
-                    >
-                      Recipe
-                    </Button>
+                <h3 className="text-xl font-semibold mb-2 text-card-foreground">
+                  {product.name}
+                </h3>
+                <p className="text-muted-foreground mb-4">{product.recipe}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-lg font-bold text-card-foreground">
+                    Rp {product.price.toFixed(2)}
+                  </span>
+                  <div className="flex space-x-2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          onClick={() => setSelectedProduct(product)}
+                        >
+                          Resep
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>{product.name}</DialogTitle>
+                        </DialogHeader>
+                        <Tabs defaultValue="bahan">
+                          <TabsList>
+                            <TabsTrigger value="bahan">Bahan-bahan</TabsTrigger>
+                            <TabsTrigger value="cara">Cara Membuat</TabsTrigger>
+                          </TabsList>
+                          <TabsContent value="bahan">
+                            <ul className="list-disc pl-5">
+                              {product.ingredients.map((ingredient, index) => (
+                                <li key={index}>{ingredient}</li>
+                              ))}
+                            </ul>
+                          </TabsContent>
+                          <TabsContent value="cara">
+                            <ol className="list-decimal pl-5">
+                              {product.instructions.map(
+                                (instruction, index) => (
+                                  <li key={index}>{instruction}</li>
+                                )
+                              )}
+                            </ol>
+                          </TabsContent>
+                        </Tabs>
+                      </DialogContent>
+                    </Dialog>
+                    <Button onClick={() => addToCart(product)}>Tambah</Button>
                   </div>
                 </div>
-              </motion.div>
+              </CardContent>
             </Card>
           ))}
         </div>
       </motion.div>
-
-      <Dialog
-        open={recipeDialog.isOpen}
-        onOpenChange={(isOpen) => setRecipeDialog({ isOpen, recipe: "" })}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Recipe Details</DialogTitle>
-          </DialogHeader>
-          <DialogDescription>{recipeDialog.recipe}</DialogDescription>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }

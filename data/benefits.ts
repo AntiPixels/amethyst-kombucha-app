@@ -1,8 +1,21 @@
-import { Benefit } from '@/lib/types'
+import { Benefit } from "@/lib/types";
 
 export const benefits: Benefit[] = [
-  { title: 'Improved Digestion', description: 'Probiotics in kombucha support a healthy gut microbiome.' },
-  { title: 'Antioxidant Boost', description: 'Rich in polyphenols that combat oxidative stress.' },
-  { title: 'Enhanced Immunity', description: 'Supports the immune system with beneficial bacteria.' },
-  { title: 'Detoxification', description: 'Aids in liver function and natural detox processes.' },
-]
+  {
+    title: "Meningkatkan Pencernaan",
+    description:
+      "Probiotik dalam kombucha mendukung mikrobioma usus yang sehat.",
+  },
+  {
+    title: "Antioksidan",
+    description: "Kaya akan polifenol yang melawan stres oksidatif.",
+  },
+  {
+    title: "Meningkatkan Kekebalan Tubuh",
+    description: "Mendukung sistem kekebalan dengan bakteri yang bermanfaat.",
+  },
+  {
+    title: "Detoksifikasi",
+    description: "Membantu fungsi hati dan proses detoksifikasi alami.",
+  },
+];
