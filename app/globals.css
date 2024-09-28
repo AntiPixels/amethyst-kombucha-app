@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 
-body {
-  font-family: 'Courier New', Courier, monospace;
-}
 
 @layer utilities {
   .text-balance {

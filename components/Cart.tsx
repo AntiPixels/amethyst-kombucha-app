@@ -34,7 +34,7 @@ Total: Rp${cartItems
 
 Kami akan segera memproses pesanan Anda. Nikmati kombucha Anda!`);
 
-    window.open(`https://wa.me/?text=${message}`, "_blank");
+    window.open(`https://wa.me/6289637579315?text=${message}`, "_blank");
   };
 
   return (
