@@ -1,28 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTheme } from "next-themes";
-import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import Logo from "@/public/assets/logo.jpg";
 import Image from "next/image";
 
-export default function Header() {
+const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const yOffset = -80; // Adjust this value based on your header height
-      const y =
-        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
 
   const sections = [
     { name: "Beranda", id: "home" },
@@ -31,6 +19,19 @@ export default function Header() {
     { name: "Produk", id: "products" },
     { name: "Testimoni", id: "testimonials" },
   ];
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const yOffset = -80; // Adjust this value based on your header height
+      const y =
+        section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    } else {
+      console.error(`Element with id "${sectionId}" not found.`);
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-300 shadow-md">
@@ -86,32 +87,21 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden"
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {sections.map((section) => (
-                <motion.button
-                  key={section.id}
-                  onClick={() => scrollToSection(section.id)}
-                  className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
-                >
-                  {section.name}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMobileMenuOpen && (
+        <div className="md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {sections.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+            >
+              {section.name}
+            </button>
+          ))}
+        </div>
+      )}
     </header>
   );
-}
+};
+
+export default Header;
