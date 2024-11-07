@@ -7,29 +7,19 @@ import THitam from "@/public/assets/teh-hitam.jpg";
 import Kopi from "@/public/assets/kopi.jpg";
 
 
+
 export const products: CartItem[] = [
   {
     id: 1,
     imageUrl: Telang,
     name: "Bunga Telang",
     price: 55000,
-    quantity: 0,
-    recipe: "Kombucha bunga telang dengan warna biru yang memesona.",
-    ingredients: [
-      "1 liter air",
-      "4 sendok makan teh hitam",
-      "100 gram gula",
-      "200 ml starter kombucha",
-      "10 gram bunga telang kering",
-    ],
-    instructions: [
-      "Rebus air dan seduh teh hitam selama 10 menit.",
-      "Tambahkan gula dan aduk hingga larut.",
-      "Dinginkan larutan teh hingga suhu ruang.",
-      "Tambahkan starter kombucha dan bunga telang.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kombucha bunga telang dengan warna biru yang memesona.",
+    benefits: [
+      "Kaya akan antioksidan",
+      "Membantu meningkatkan kesehatan mata",
+      "Mendukung fungsi kognitif",
+      "Memiliki sifat anti-inflamasi",
     ],
   },
   {
@@ -37,23 +27,12 @@ export const products: CartItem[] = [
     imageUrl: Amarant,
     name: "Bunga Amaranth",
     price: 52000,
-    quantity: 0,
-    recipe: "Kaya antioksidan dengan warna merah yang menawan.",
-    ingredients: [
-      "1 liter air",
-      "4 sendok makan teh hitam",
-      "100 gram gula",
-      "200 ml starter kombucha",
-      "15 gram bunga amaranth kering",
-    ],
-    instructions: [
-      "Rebus air dan seduh teh hitam selama 10 menit.",
-      "Tambahkan gula dan aduk hingga larut.",
-      "Dinginkan larutan teh hingga suhu ruang.",
-      "Tambahkan starter kombucha dan bunga amaranth.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kaya antioksidan dengan warna merah yang menawan.",
+    benefits: [
+      "Mendukung kesehatan jantung",
+      "Membantu menurunkan kolesterol",
+      "Kaya akan protein nabati",
+      "Mendukung sistem kekebalan tubuh",
     ],
   },
   {
@@ -61,23 +40,12 @@ export const products: CartItem[] = [
     imageUrl: Kelor,
     name: "Daun Kelor",
     price: 50000,
-    quantity: 0,
-    recipe: "Kombucha daun kelor kaya nutrisi.",
-    ingredients: [
-      "1 liter air",
-      "4 sendok makan teh hitam",
-      "100 gram gula",
-      "200 ml starter kombucha",
-      "20 gram daun kelor segar",
-    ],
-    instructions: [
-      "Rebus air dan seduh teh hitam selama 10 menit.",
-      "Tambahkan gula dan aduk hingga larut.",
-      "Dinginkan larutan teh hingga suhu ruang.",
-      "Tambahkan starter kombucha dan daun kelor.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kombucha daun kelor kaya nutrisi.",
+    benefits: [
+      "Kaya akan vitamin dan mineral",
+      "Membantu mengurangi peradangan",
+      "Mendukung kesehatan tulang",
+      "Membantu mengontrol gula darah",
     ],
   },
   {
@@ -85,22 +53,12 @@ export const products: CartItem[] = [
     imageUrl: THijau,
     name: "Teh Hijau",
     price: 48000,
-    quantity: 0,
-    recipe: "Kombucha teh hijau untuk kesegaran yang menyehatkan.",
-    ingredients: [
-      "1 liter air",
-      "4 sendok makan teh hijau",
-      "100 gram gula",
-      "200 ml starter kombucha",
-    ],
-    instructions: [
-      "Rebus air dan seduh teh hijau selama 3-5 menit.",
-      "Tambahkan gula dan aduk hingga larut.",
-      "Dinginkan larutan teh hingga suhu ruang.",
-      "Tambahkan starter kombucha.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kombucha teh hijau untuk kesegaran yang menyehatkan.",
+    benefits: [
+      "Meningkatkan metabolisme",
+      "Kaya akan antioksidan",
+      "Membantu meningkatkan fungsi otak",
+      "Mendukung kesehatan jantung",
     ],
   },
   {
@@ -108,22 +66,12 @@ export const products: CartItem[] = [
     imageUrl: THitam,
     name: "Teh Hitam",
     price: 45000,
-    quantity: 0,
-    recipe: "Kombucha teh hitam klasik dengan cita rasa kuat.",
-    ingredients: [
-      "1 liter air",
-      "4 sendok makan teh hitam",
-      "100 gram gula",
-      "200 ml starter kombucha",
-    ],
-    instructions: [
-      "Rebus air dan seduh teh hitam selama 10 menit.",
-      "Tambahkan gula dan aduk hingga larut.",
-      "Dinginkan larutan teh hingga suhu ruang.",
-      "Tambahkan starter kombucha.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kombucha teh hitam klasik dengan cita rasa kuat.",
+    benefits: [
+      "Meningkatkan energi",
+      "Membantu kesehatan pencernaan",
+      "Mendukung kesehatan jantung",
+      "Membantu meningkatkan kekebalan tubuh",
     ],
   },
   {
@@ -131,22 +79,12 @@ export const products: CartItem[] = [
     imageUrl: Kopi,
     name: "Kopi Kombucha",
     price: 58000,
-    quantity: 0,
-    recipe: "Kombucha kopi untuk dorongan energi yang unik.",
-    ingredients: [
-      "1 liter air",
-      "50 gram biji kopi giling kasar",
-      "100 gram gula",
-      "200 ml starter kombucha",
-    ],
-    instructions: [
-      "Rebus air dan seduh kopi menggunakan metode cold brew selama 12-24 jam.",
-      "Saring kopi dan tambahkan gula, aduk hingga larut.",
-      "Dinginkan larutan kopi hingga suhu ruang.",
-      "Tambahkan starter kombucha.",
-      "Tutup wadah dengan kain bersih dan fermentasi selama 7-10 hari.",
-      "Saring dan botolkan kombucha kopi.",
-      "Lakukan fermentasi kedua selama 2-3 hari untuk mendapatkan efervesen.",
+    description: "Kombucha kopi untuk dorongan energi yang unik.",
+    benefits: [
+      "Meningkatkan fokus dan konsentrasi",
+      "Mendukung kesehatan hati",
+      "Membantu meningkatkan metabolisme",
+      "Kaya akan antioksidan",
     ],
   },
 ];

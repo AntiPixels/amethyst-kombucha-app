@@ -11,14 +11,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useCart } from "@/components/CartContext";
 import { products } from "@/data/products";
 import { CartItem } from "@/lib/types";
 import Image from "next/image";
 
 export default function Products() {
-  const { addToCart } = useCart();
   const [selectedProduct, setSelectedProduct] = useState<CartItem | null>(null);
 
   return (
@@ -46,51 +43,36 @@ export default function Products() {
                 <h3 className="text-xl font-semibold mb-2 text-card-foreground">
                   {product.name}
                 </h3>
-                <p className="text-muted-foreground mb-4">{product.recipe}</p>
+                <p className="text-muted-foreground mb-4">
+                  {product.description}
+                </p>
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-bold text-card-foreground">
                     Rp {product.price.toFixed(2)}
                   </span>
-                  <div className="flex space-x-2">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button
-                          variant="outline"
-                          onClick={() => setSelectedProduct(product)}
-                        >
-                          Resep
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>{product.name}</DialogTitle>
-                        </DialogHeader>
-                        <Tabs defaultValue="bahan">
-                          <TabsList>
-                            <TabsTrigger value="bahan">Bahan-bahan</TabsTrigger>
-                            <TabsTrigger value="cara">Cara Membuat</TabsTrigger>
-                          </TabsList>
-                          <TabsContent value="bahan">
-                            <ul className="list-disc pl-5">
-                              {product.ingredients.map((ingredient, index) => (
-                                <li key={index}>{ingredient}</li>
-                              ))}
-                            </ul>
-                          </TabsContent>
-                          <TabsContent value="cara">
-                            <ol className="list-decimal pl-5">
-                              {product.instructions.map(
-                                (instruction, index) => (
-                                  <li key={index}>{instruction}</li>
-                                )
-                              )}
-                            </ol>
-                          </TabsContent>
-                        </Tabs>
-                      </DialogContent>
-                    </Dialog>
-                    <Button onClick={() => addToCart(product)}>Tambah</Button>
-                  </div>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button
+                        variant="outline"
+                        onClick={() => setSelectedProduct(product)}
+                      >
+                        Khasiat
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>{product.name}</DialogTitle>
+                      </DialogHeader>
+                      <div className="mt-4">
+                        <h4 className="text-lg font-semibold mb-2">Khasiat:</h4>
+                        <ul className="list-disc pl-5">
+                          {product.benefits.map((benefit, index) => (
+                            <li key={index}>{benefit}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </CardContent>
             </Card>

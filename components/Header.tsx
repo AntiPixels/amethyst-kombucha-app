@@ -1,44 +1,17 @@
 "use client";
 
-import { useState} from "react";
+import { useState } from "react";
 import { useTheme } from "next-themes";
-import {
-  motion,
-  useScroll,
-  useMotionValueEvent,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { ShoppingCart, Menu, X, Sun, Moon } from "lucide-react";
-import Cart from "./Cart";
-import { useCart } from "@/components/CartContext";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import Logo from "@/public/assets/logo.jpg";
 import Image from "next/image";
 
 export default function Header() {
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { scrollY } = useScroll();
-  const { cartItems } = useCart();
-  const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const currentScrollY = latest;
-    if (currentScrollY > lastScrollY && currentScrollY > 80) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-    setLastScrollY(currentScrollY);
-  });
-
-  const totalCartItems = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -60,110 +33,85 @@ export default function Header() {
   ];
 
   return (
-    <>
-      <motion.header
-        variants={{
-          visible: { y: 0 },
-          hidden: { y: "-100%" },
-        }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-300 shadow-md "
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <Image
-                src={Logo}
-                alt="Amethyst Kombucha Logo"
-                width={40}
-                height={40}
-                className="filter drop-shadow-md rounded-full"
-              />
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                {sections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {section.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-center">
-              <Switch
-                checked={theme === "dark"}
-                onCheckedChange={() =>
-                  setTheme(theme === "dark" ? "light" : "dark")
-                }
-                className="mr-4"
-              />
-              {theme === "dark" ? (
-                <Moon className="h-4 w-4 text-foreground" />
-              ) : (
-                <Sun className="h-4 w-4 text-foreground" />
-              )}
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsCartOpen(true)}
-                className="relative ml-4"
-              >
-                <ShoppingCart className="h-6 w-6 text-foreground" />
-                {totalCartItems > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs">
-                    {totalCartItems}
-                  </span>
-                )}
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="ml-4 md:hidden"
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-6 w-6 text-foreground" />
-                ) : (
-                  <Menu className="h-6 w-6 text-foreground" />
-                )}
-              </Button>
-            </div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-300 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <Image
+              src={Logo}
+              alt="Amethyst Kombucha Logo"
+              width={40}
+              height={40}
+              className="filter drop-shadow-md rounded-full"
+            />
           </div>
-        </div>
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
               {sections.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                  className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
                 >
                   {section.name}
                 </button>
               ))}
             </div>
           </div>
-        )}
-      </motion.header>
+          <div className="flex items-center">
+            <Switch
+              checked={theme === "dark"}
+              onCheckedChange={() =>
+                setTheme(theme === "dark" ? "light" : "dark")
+              }
+              className="mr-4"
+            />
+            {theme === "dark" ? (
+              <Moon className="h-4 w-4 text-foreground" />
+            ) : (
+              <Sun className="h-4 w-4 text-foreground" />
+            )}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="ml-4 md:hidden"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6 text-foreground" />
+              ) : (
+                <Menu className="h-6 w-6 text-foreground" />
+              )}
+            </Button>
+          </div>
+        </div>
+      </div>
       <AnimatePresence>
-        {isCartOpen && (
+        {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
-            onClick={() => setIsCartOpen(false)}
-          />
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {sections.map((section) => (
+                <motion.button
+                  key={section.id}
+                  onClick={() => scrollToSection(section.id)}
+                  className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
+                >
+                  {section.name}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-    </>
+    </header>
   );
 }

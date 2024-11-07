@@ -36,7 +36,6 @@ export default function Testimonials() {
         <div className="relative">
           <Card className="p-6 h-60 bg-card text-card-foreground rounded-lg shadow-md">
             <div className="flex items-center mb-4 justify-center">
-              <div className="w-12 h-12 bg-primary rounded-full mr-4"></div>
               <div>
                 <h3 className="font-semibold">
                   {testimonials[currentIndex].name}

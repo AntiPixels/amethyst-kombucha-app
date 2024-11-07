@@ -5,7 +5,7 @@ export default function Footer() {
         <h3 className="text-lg font-semibold mb-2">Amethyst Kombucha</h3>
         <p className="text-sm text-muted-foreground mb-2">by MegaKitchen</p>
         <p className="text-sm text-muted-foreground mb-2">
-          Jl. Kombucha No. 123, Kota Sehat, 12345
+          Jl. Poltangan Raya, Pasar Minggu, Jakarta Selatan, DKI Jakarta 12520.
         </p>
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Amethyst Kombucha. Hak Cipta

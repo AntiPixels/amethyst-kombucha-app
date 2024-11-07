@@ -5,10 +5,8 @@ export interface CartItem {
   imageUrl: StaticImageData;
   name: string;
   price: number;
-  quantity: number;
-  recipe: string;
-  ingredients: string[];
-  instructions: string[];
+  description: string;
+  benefits: string[];
 }
 
 export interface Benefit {
