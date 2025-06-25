@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import Chatbot from "@/components/Chatbot";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="antialiased font-sans">
         <ThemeProvider enableSystem={true} attribute="class">
           {children}
+          <Chatbot />
           <Analytics />
         </ThemeProvider>
       </body>
